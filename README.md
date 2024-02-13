@@ -9,6 +9,6 @@
 
 ### 컴포넌트 구조
 
-![i](https://gist.github.com/assets/37579982/1e93d842-d863-4bf4-9382-0fe9a831b361){: width="500px"}
+![i](https://gist.github.com/assets/37579982/1e93d842-d863-4bf4-9382-0fe9a831b361)
 
 # 학습 정리
