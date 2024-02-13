@@ -9,6 +9,6 @@
 
 ### 컴포넌트 구조
 
-![image](./img/컴포넌트구조.jpg){: width="500px"}
+![image](./img/컴포넌트구조.jpg){: width="300px"}
 
 # 학습 정리
