@@ -12,3 +12,16 @@
 <img src="./img/컴포넌트구조.jpg" alt="component-structure" style="width:500px;"/>
 
 # 학습 정리
+
+## eslint jsx-a11y 사용시
+
+- `jsx-a11y/click-events-have-key-events` 에러 발생
+  - 마우스를 사용하지 못하거나 화면을 보지 못하는 사람들을 위해 button태그가 아닌 곳에 onClick 이벤트 등록시 에러발생.
+  - [해결방법](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/0d5321a5457c5f0da0ca216053cc5b4f571b53ae/docs/rules/click-events-have-key-events.md)
+- `jsx-a11y/no-noninteractive-element-interactions` 에러 발생
+  - 마우스나 키보드 이벤트 핸들링을 지원하지 않는 non-interactiove HTML 태그에 클릭이벤트 핸들러를 추가하여 발생.
+  - [해결방법](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/0d5321a5457c5f0da0ca216053cc5b4f571b53ae/docs/rules/no-noninteractive-element-interactions.md)
+    - `role='presentation'`을 추가
+      > 이게 맞는 방법인가...?
+      - `role="presentation", role="none"`은 semantic 의미를 요소와 그 자식요소로부터 제거하기 위해 사용됨. 시각적으로
+        게시하는 요소에 적용. `none`은 비교적 최근에 나온 속성값으로 `presentation`과 같은 역할.
