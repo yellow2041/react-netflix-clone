@@ -57,9 +57,8 @@ export default function Banner() {
             height='360'
             src={`https://www.youtube.com/embed/${movie.videos.results[0].key}?controls=0&autoplay=1&loop=1&playlist=${movie.videos.results[0].key}`}
             title='YouTube video player'
-            frameborder='0'
             allow='autoplay; fullscreen'
-            allowfullscreen
+            allowFullScreen
           ></Iframe>
         </HomeContainer>
       </Container>
