@@ -25,3 +25,14 @@
       > 이게 맞는 방법인가...?
       - `role="presentation", role="none"`은 semantic 의미를 요소와 그 자식요소로부터 제거하기 위해 사용됨. 시각적으로
         게시하는 요소에 적용. `none`은 비교적 최근에 나온 속성값으로 `presentation`과 같은 역할.
+
+## CSS media query
+
+- 화면 가로가 769px보다 줄어들면 어떻게 할지 정의
+
+```css
+@media (max-width: 769px) {
+  padding: 20px 20px;
+  padding-bottom: 30px;
+}
+```
