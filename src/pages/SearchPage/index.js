@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from '../../api/axios';
 import './SearchPage.css';
+import { useDebounce } from '../../hooks/useDebounce';
 
 export default function SearchPage() {
   const [searchResults, setSearchResults] = useState([]);
@@ -10,15 +11,16 @@ export default function SearchPage() {
   };
 
   let query = useQuery();
-  const searchTerm = query.get('q');
+  const debouncedSearchTerm = useDebounce(query.get('q'), 500);
 
   useEffect(() => {
-    if (searchTerm) {
-      fetchSearchMovie(searchTerm);
+    if (debouncedSearchTerm) {
+      fetchSearchMovie(debouncedSearchTerm);
     }
-  }, [searchTerm]);
+  }, [debouncedSearchTerm]);
 
   const fetchSearchMovie = async (searchTerm) => {
+    console.log(searchTerm);
     try {
       const request = await axios.get(`/search/multi?include_adult=false&query=${searchTerm}`);
       setSearchResults(request.data.results);
@@ -46,7 +48,7 @@ export default function SearchPage() {
     ) : (
       <section>
         <div className='no-results'>
-          <p>찾고자하는 검색어 &quot;{searchTerm}&quot;에 대한 결과가 없습니다.</p>
+          <p>찾고자하는 검색어 &quot;{debouncedSearchTerm}&quot;에 대한 결과가 없습니다.</p>
         </div>
       </section>
     );

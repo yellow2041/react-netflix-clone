@@ -36,3 +36,38 @@
   padding-bottom: 30px;
 }
 ```
+
+## Debounce
+
+- 사용자가 타이핑을 멈출때까지 처리를 지연시키는것
+  - 서버로 api 호출을 줄일 수 있다(검색시 검색어 변겅될때마다 검색하는 api 호출하고 있음)
+- hook으로 만들어서 사용
+
+```js
+export const useDebounce = (value, delay) => {
+  const [debounceValue, setDebounceValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debounceValue;
+};
+```
+
+- 사용부분
+
+```js
+const debouncedSearchTerm = useDebounce(query.get('q'), 500);
+
+useEffect(() => {
+  if (debouncedSearchTerm) {
+    fetchSearchMovie(debouncedSearchTerm);
+  }
+}, [debouncedSearchTerm]);
+```
