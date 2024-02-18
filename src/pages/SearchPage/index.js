@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
 import './SearchPage.css';
 import { useDebounce } from '../../hooks/useDebounce';
 
 export default function SearchPage() {
+  const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -20,7 +21,6 @@ export default function SearchPage() {
   }, [debouncedSearchTerm]);
 
   const fetchSearchMovie = async (searchTerm) => {
-    console.log(searchTerm);
     try {
       const request = await axios.get(`/search/multi?include_adult=false&query=${searchTerm}`);
       setSearchResults(request.data.results);
@@ -37,7 +37,12 @@ export default function SearchPage() {
             const movieImageUrl = 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path;
             return (
               <div key={movie.id} className='movie'>
-                <div className='movie__column-poster'>
+                <div
+                  onClick={() => navigate(`/${movie.id}`)}
+                  onKeyDown={() => navigate(`/${movie.id}`)}
+                  role='presentation'
+                  className='movie__column-poster'
+                >
                   <img src={movieImageUrl} alt='movie' className='movie__poster' />
                 </div>
               </div>
