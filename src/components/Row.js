@@ -35,7 +35,7 @@ export default function Row({ isLargeRow, fetchUrl, title, id }) {
         pagination={{ clickable: true }}
         loop={true}
         breakpoints={{
-          1378: { slidePerView: 6, slidesPerGroup: 6 },
+          1800: { slidePerView: 6, slidesPerGroup: 6 },
           998: { slidesPerView: 5, slidesPerGroup: 5 },
           625: { slidesPerView: 4, slidesPerGroup: 4 },
           0: { slidesPerView: 3, slidesPerGroup: 3 },
